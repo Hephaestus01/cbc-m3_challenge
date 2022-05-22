@@ -9,7 +9,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  // removed >> var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = generatePassword();
 }
@@ -17,6 +16,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// main function for random password generation based on user criteria
 function generatePassword() {
   // user inputs for character types
   charString = "";
@@ -28,6 +28,12 @@ function generatePassword() {
   var useUpperLetters = window.confirm("Do you want to use uppercase letters?");
   var useSpecialChars = window.confirm("Do you want to use special characters?");
   var useNumbers = window.confirm("Do you want to use numbers?");
+
+  // If user does not choose any character type set, user will be prompted to start again
+  if (!useLowerLetters && !useUpperLetters && !useSpecialChars && !useNumbers) {
+    window.confirm("You must select at least one type of character set. Please try again.");
+    return generatePassword();
+  }
 
   // building the string of characters list
   if (useLowerLetters) {
@@ -46,7 +52,7 @@ function generatePassword() {
   // using iterative process to take random index value in charString until chooseLength is met
   password = "";
   while (password.length < chooseLength) {
-    password = password + charString[Math.floor(Math.random() * (charString.length ))];
+    password = password + charString[Math.floor(Math.random() * (charString.length))];
   }
   return password;
 }
