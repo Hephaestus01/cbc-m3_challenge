@@ -1,1 +1,2 @@
-# Password Generator Starter Code
+# Module 3 Challenge - Password Generator
+
