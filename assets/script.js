@@ -1,5 +1,5 @@
 // Assignment code here
-var lettersLower = 'abcdefghijklmnopqrstuvwxyz';
+const lettersLower = 'abcdefghijklmnopqrstuvwxyz';
 var lettersUpper = lettersLower.toUpperCase();
 var specialChars = '!@#$%^&*()';
 var numbers = '0123456789';
@@ -11,6 +11,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value = generatePassword();
+  console.log(passwordText);
 }
 
 // Add event listener to generate button
@@ -19,9 +20,10 @@ generateBtn.addEventListener("click", writePassword);
 // main function for random password generation based on user criteria
 function generatePassword() {
   // user inputs for character types
-  charString = "";
+  var charString = "";
   var chooseLength = parseInt(window.prompt("How long do you want your password to be? Choose a value between 8 and 128."));
   if (chooseLength < 8 || chooseLength > 128 || isNaN(chooseLength)) {
+    window.alert("You must choose a character length between 8 and 128.");
     return generatePassword();
   }
   var useLowerLetters = window.confirm("Do you want to use lowercase letters?");
@@ -37,22 +39,22 @@ function generatePassword() {
 
   // building the string of characters list
   if (useLowerLetters) {
-    charString = charString + lettersLower;
+    charString += lettersLower;
   }
   if (useUpperLetters) {
-    charString = charString + lettersUpper;
+    charString += lettersUpper;
   }
   if (useSpecialChars) {
-    charString = charString + specialChars;
+    charString += specialChars;
   }
   if (useNumbers) {
-    charString = charString + numbers;
+    charString += numbers;
   }
 
   // using iterative process to take random index value in charString until chooseLength is met
-  password = "";
+  var password = "";
   while (password.length < chooseLength) {
-    password = password + charString[Math.floor(Math.random() * (charString.length))];
+    password += charString[Math.floor(Math.random() * (charString.length))];
   }
   return password;
 }
