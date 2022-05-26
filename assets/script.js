@@ -6,6 +6,7 @@ var numbers = '0123456789';
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+var resetBtn = document.querySelector("#reset");
 
 // Write password to the #password input
 function writePassword() {
@@ -16,6 +17,7 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+resetBtn.addEventListener("click", resetField);
 
 // main function for random password generation based on user criteria
 function generatePassword() {
@@ -58,3 +60,7 @@ function generatePassword() {
   }
   return password;
 }
+
+function resetField() {
+  document.getElementById("password").value = "";
+  } 
