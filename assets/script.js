@@ -1,5 +1,5 @@
 // Assignment code here
-const lettersLower = 'abcdefghijklmnopqrstuvwxyz';
+var lettersLower = 'abcdefghijklmnopqrstuvwxyz';
 var lettersUpper = lettersLower.toUpperCase();
 var specialChars = '!@#$%^&*()';
 var numbers = '0123456789';
